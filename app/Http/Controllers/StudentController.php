@@ -33,6 +33,24 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
+        // Form Validation
+        $request->validate([
+            'name'=>'required|string',
+            'email'=>'required|email',
+            'age'=>'required|numeric',
+            'city'=>'required|string',
+        ]
+        // ,[
+        //     'name.required'=>'Please Enter Your Name',
+        //     'name.alpha'=>'Please Enter Your Name in Alphabet',
+        //     'email.required'=>'Please Enter Your Email',
+        //     'email.email'=>'Please Enter Your Email Correctly',
+        //     'age.required'=>'Please Enter Your Age',
+        //     'age.numeric'=>'Please Enter Your Age in Number',
+        //     'city.required'=>'Please Enter Your City',
+        // ]
+    );
+
         // //Method 1
         // $student = new Student();
         // first name came from database table and last one came from from name=name
@@ -78,6 +96,23 @@ class StudentController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        // Form Validation
+        $request->validate([
+            'name'=>'required|string',
+            'email'=>'required|email',
+            'age'=>'required|numeric',
+            'city'=>'required|string',
+        ]
+        // ],[
+        //     'name.required'=>'Please Enter Your Name',
+        //     'name.alpha'=>'Please Enter Your Name in Alphabet',
+        //     'email.required'=>'Please Enter Your Email',
+        //     'email.email'=>'Please Enter Your Email Correctly',
+        //     'age.required'=>'Please Enter Your Age',
+        //     'age.numeric'=>'Please Enter Your Age in Number',
+        //     'city.required'=>'Please Enter Your City',
+        // ]
+    );
         //Method 1
         // $students = Student::find($id);
         // $students->name = $request->name;
@@ -103,8 +138,14 @@ class StudentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Student $student)
+    public function destroy(string $id)
     {
-        //
+        //Method 1
+        // $students = Student::find($id);
+        // $students->delete();
+
+        // Method 2
+        Student::destroy($id);
+        return redirect()->route('student.index')->with('status', 'Student Deleted Successfully');
     }
 }

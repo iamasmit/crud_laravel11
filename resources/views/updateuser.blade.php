@@ -9,6 +9,11 @@ Add New User
 <form action="{{route('student.update', $students->id)}}" method="POST">
     @csrf
     @method('PUT')
+    <pre>
+        @php
+            print_r($errors->all());
+        @endphp
+    </pre>
     <div class="mb-3">
         <label class="form-label">Name</label>
         <input type="text" value="{{$students->name}}" class="form-control" name="name">

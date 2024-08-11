@@ -25,7 +25,13 @@ All Users Data
                         <td>{{ $data->age }}</td>
                         <td>{{ $data->city }}</td>
                         <td ><a href="{{route('student.show', $data->id)}}" class="btn btn-primary btn-sm">view</a></td>
-                        <td ><a href="" class="btn btn-danger btn-sm">Delete</a></td>
+                        <td>
+                            <form action="{{route('student.destroy', $data->id)}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                        </td>         
                         <td ><a href="{{route('student.edit', $data->id)}}" class="btn btn-warning btn-sm">Update</a></td>
                     </tr>
                       @endforeach
