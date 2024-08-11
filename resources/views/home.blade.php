@@ -26,7 +26,7 @@ All Users Data
                         <td>{{ $data->city }}</td>
                         <td ><a href="{{route('student.show', $data->id)}}" class="btn btn-primary btn-sm">view</a></td>
                         <td ><a href="" class="btn btn-danger btn-sm">Delete</a></td>
-                        <td ><a href="{{route('student.update', $data->id)}}" class="btn btn-warning btn-sm">Update</a></td>
+                        <td ><a href="{{route('student.edit', $data->id)}}" class="btn btn-warning btn-sm">Update</a></td>
                     </tr>
                       @endforeach
 
